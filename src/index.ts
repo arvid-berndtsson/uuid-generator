@@ -1,9 +1,9 @@
-import { generateUUIDv1, generateUUIDv4, generateUUIDv7 } from './uuid.js';
+import { generateUUIDv1, generateUUIDv4, generateUUIDv7 } from './uuid';
 
 /**
  * Build the HTML page displaying generated UUIDs.
  */
-function buildHTML() {
+function buildHTML(): string {
 	const uuids = {
 		v1: generateUUIDv1(),
 		v4: generateUUIDv4(),
@@ -233,7 +233,7 @@ function buildHTML() {
 }
 
 export default {
-	async fetch() {
+	async fetch(): Promise<Response> {
 		const html = buildHTML();
 		return new Response(html, {
 			headers: {

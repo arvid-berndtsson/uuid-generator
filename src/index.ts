@@ -30,9 +30,9 @@ function buildMainHTML(): string {
 		* { margin: 0; padding: 0; box-sizing: border-box; }
 
 		body {
-			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-			background: #0f172a;
-			color: #e2e8f0;
+			font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+			background: #f5f5f7;
+			color: #1d1d1f;
 			min-height: 100vh;
 			display: flex;
 			align-items: center;
@@ -50,23 +50,25 @@ function buildMainHTML(): string {
 			font-weight: 600;
 			text-align: center;
 			margin-bottom: 0.5rem;
-			color: #f8fafc;
+			color: #1d1d1f;
+			letter-spacing: -0.02em;
 		}
 
 		.subtitle {
 			text-align: center;
 			font-size: 0.8rem;
-			color: #64748b;
+			color: #86868b;
 			margin-bottom: 2rem;
 		}
 
 		/* ── Primary UUID card ──────────────────────────────────── */
 		.primary-card {
-			background: #1e293b;
-			border: 1px solid #3b82f6;
-			border-radius: 0.75rem;
+			background: #ffffff;
+			border: 1px solid #e8e8ed;
+			border-radius: 12px;
 			padding: 1.5rem;
 			margin-bottom: 1.5rem;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 		}
 
 		.primary-header {
@@ -78,25 +80,26 @@ function buildMainHTML(): string {
 
 		.primary-version {
 			font-size: 1rem;
-			font-weight: 700;
-			color: #f8fafc;
+			font-weight: 600;
+			color: #1d1d1f;
 		}
 
 		.badge-best {
 			font-size: 0.625rem;
-			font-weight: 700;
+			font-weight: 600;
 			text-transform: uppercase;
 			letter-spacing: 0.05em;
 			padding: 0.125rem 0.5rem;
 			border-radius: 9999px;
-			background: #3b82f620;
-			color: #60a5fa;
+			background: rgba(0, 113, 227, 0.1);
+			color: #0071e3;
 		}
 
 		.primary-description {
 			font-size: 0.8rem;
-			color: #94a3b8;
+			color: #6e6e73;
 			margin-bottom: 1rem;
+			line-height: 1.5;
 		}
 
 		.uuid-value-row {
@@ -108,23 +111,23 @@ function buildMainHTML(): string {
 		.uuid-value {
 			flex: 1;
 			font-family: "SF Mono", "Fira Code", "Fira Mono", Menlo, Consolas, monospace;
-			font-size: 0.95rem;
-			color: #f1f5f9;
-			background: #0f172a;
+			font-size: 0.875rem;
+			color: #1d1d1f;
+			background: #f5f5f7;
 			padding: 0.625rem 0.75rem;
-			border-radius: 0.5rem;
-			border: 1px solid #334155;
+			border-radius: 8px;
+			border: 1px solid #e8e8ed;
 			word-break: break-all;
 			user-select: all;
 		}
 
 		.copy-btn {
 			background: none;
-			border: 1px solid #334155;
-			border-radius: 0.5rem;
+			border: 1px solid #e8e8ed;
+			border-radius: 8px;
 			padding: 0.625rem;
 			cursor: pointer;
-			color: #94a3b8;
+			color: #6e6e73;
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -132,7 +135,7 @@ function buildMainHTML(): string {
 			flex-shrink: 0;
 		}
 
-		.copy-btn:hover { background: #334155; color: #f1f5f9; }
+		.copy-btn:hover { background: #f5f5f7; color: #1d1d1f; border-color: #d2d2d7; }
 		.copy-btn svg { width: 18px; height: 18px; }
 
 		/* ── Regenerate button ──────────────────────────────────── */
@@ -146,42 +149,44 @@ function buildMainHTML(): string {
 			display: flex;
 			align-items: center;
 			gap: 0.5rem;
-			background: #3b82f6;
+			background: #0071e3;
 			color: #fff;
 			border: none;
-			border-radius: 0.5rem;
-			padding: 0.625rem 1.25rem;
+			border-radius: 9999px;
+			padding: 0.625rem 1.5rem;
 			font-size: 0.875rem;
-			font-weight: 500;
+			font-weight: 400;
 			cursor: pointer;
 			transition: background 0.15s ease;
+			letter-spacing: -0.01em;
 		}
 
-		.refresh-btn:hover { background: #2563eb; }
+		.refresh-btn:hover { background: #0077ed; }
 		.refresh-btn svg { width: 16px; height: 16px; }
 
 		/* ── Alternative versions ───────────────────────────────── */
 		.alt-section-title {
-			font-size: 0.75rem;
+			font-size: 0.7rem;
 			font-weight: 600;
 			text-transform: uppercase;
 			letter-spacing: 0.08em;
-			color: #475569;
+			color: #86868b;
 			margin-bottom: 0.75rem;
 		}
 
 		.alt-card {
-			background: #1e293b;
-			border: 1px solid #1e293b;
-			border-radius: 0.75rem;
+			background: #ffffff;
+			border: 1px solid #e8e8ed;
+			border-radius: 12px;
 			padding: 1rem 1.25rem;
 			margin-bottom: 0.75rem;
 			cursor: pointer;
-			transition: border-color 0.15s ease;
+			transition: border-color 0.15s ease, box-shadow 0.15s ease;
+			box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 		}
 
-		.alt-card:hover { border-color: #475569; }
-		.alt-card.active { border-color: #3b82f6; }
+		.alt-card:hover { border-color: #d2d2d7; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); }
+		.alt-card.active { border-color: #0071e3; }
 
 		.alt-header {
 			display: flex;
@@ -193,13 +198,14 @@ function buildMainHTML(): string {
 		.alt-version {
 			font-size: 0.875rem;
 			font-weight: 600;
-			color: #94a3b8;
+			color: #1d1d1f;
 		}
 
 		.alt-description {
 			font-size: 0.75rem;
-			color: #64748b;
+			color: #6e6e73;
 			margin-bottom: 0.625rem;
+			line-height: 1.5;
 		}
 
 		/* ── Footer ─────────────────────────────────────────────── */
@@ -207,11 +213,11 @@ function buildMainHTML(): string {
 			text-align: center;
 			margin-top: 2rem;
 			font-size: 0.75rem;
-			color: #475569;
+			color: #86868b;
 		}
 
 		.footer a {
-			color: #60a5fa;
+			color: #0071e3;
 			text-decoration: none;
 		}
 
@@ -324,10 +330,14 @@ function buildHistoryHTML(): string {
 	<style>
 		* { margin: 0; padding: 0; box-sizing: border-box; }
 
+		html, body {
+			overflow-x: hidden;
+		}
+
 		body {
-			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-			background: #0f172a;
-			color: #e2e8f0;
+			font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+			background: #f5f5f7;
+			color: #1d1d1f;
 			min-height: 100vh;
 			padding: 2rem 1rem 4rem;
 		}
@@ -342,7 +352,7 @@ function buildHistoryHTML(): string {
 			align-items: center;
 			gap: 0.4rem;
 			font-size: 0.8rem;
-			color: #60a5fa;
+			color: #0071e3;
 			text-decoration: none;
 			margin-bottom: 2rem;
 		}
@@ -352,13 +362,14 @@ function buildHistoryHTML(): string {
 		h1 {
 			font-size: 1.75rem;
 			font-weight: 700;
-			color: #f8fafc;
+			color: #1d1d1f;
 			margin-bottom: 0.5rem;
+			letter-spacing: -0.03em;
 		}
 
 		.lead {
 			font-size: 0.95rem;
-			color: #94a3b8;
+			color: #6e6e73;
 			margin-bottom: 2.5rem;
 			line-height: 1.6;
 		}
@@ -366,10 +377,11 @@ function buildHistoryHTML(): string {
 		h2 {
 			font-size: 1.1rem;
 			font-weight: 600;
-			color: #f1f5f9;
+			color: #1d1d1f;
 			margin-bottom: 0.75rem;
 			padding-top: 2rem;
-			border-top: 1px solid #1e293b;
+			border-top: 1px solid #e8e8ed;
+			letter-spacing: -0.01em;
 		}
 
 		h2:first-of-type { border-top: none; padding-top: 0; }
@@ -377,7 +389,7 @@ function buildHistoryHTML(): string {
 		p {
 			font-size: 0.9rem;
 			line-height: 1.7;
-			color: #cbd5e1;
+			color: #3a3a3c;
 			margin-bottom: 0.875rem;
 		}
 
@@ -388,10 +400,11 @@ function buildHistoryHTML(): string {
 		}
 
 		.version-card {
-			background: #1e293b;
-			border: 1px solid #334155;
-			border-radius: 0.75rem;
+			background: #ffffff;
+			border: 1px solid #e8e8ed;
+			border-radius: 12px;
 			padding: 1.25rem;
+			box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 		}
 
 		.version-card-header {
@@ -403,22 +416,22 @@ function buildHistoryHTML(): string {
 
 		.version-label {
 			font-size: 0.9rem;
-			font-weight: 700;
-			color: #f1f5f9;
+			font-weight: 600;
+			color: #1d1d1f;
 		}
 
 		.badge {
 			font-size: 0.6rem;
-			font-weight: 700;
+			font-weight: 600;
 			text-transform: uppercase;
 			letter-spacing: 0.05em;
 			padding: 0.1rem 0.45rem;
 			border-radius: 9999px;
 		}
 
-		.badge-blue  { background: #3b82f620; color: #60a5fa; }
-		.badge-green { background: #22c55e20; color: #4ade80; }
-		.badge-slate { background: #47556920; color: #94a3b8; }
+		.badge-blue  { background: rgba(0, 113, 227, 0.1); color: #0071e3; }
+		.badge-green { background: rgba(37, 162, 68, 0.1); color: #25a244; }
+		.badge-slate { background: rgba(142, 142, 147, 0.15); color: #6e6e73; }
 
 		.version-card p { margin-bottom: 0; }
 
@@ -428,7 +441,7 @@ function buildHistoryHTML(): string {
 			font-family: "SF Mono", "Fira Code", Menlo, Consolas, monospace;
 			font-size: 0.7rem;
 			border-radius: 0.4rem;
-			overflow: hidden;
+			overflow-x: auto;
 			margin: 0.875rem 0;
 		}
 
@@ -436,24 +449,24 @@ function buildHistoryHTML(): string {
 			padding: 0.35rem 0.5rem;
 			text-align: center;
 			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
+			flex-shrink: 0;
 		}
 
-		.seg-ts   { background: #1d4ed840; color: #93c5fd; flex: 3; }
-		.seg-ver  { background: #7c3aed40; color: #c4b5fd; flex: 0.5; }
-		.seg-rand { background: #065f4640; color: #6ee7b7; flex: 3; }
-		.seg-var  { background: #92400e40; color: #fcd34d; flex: 0.5; }
-		.seg-node { background: #1e293b;   color: #94a3b8;  flex: 3; }
+		.seg-ts   { background: rgba(0, 113, 227, 0.1);   color: #0055b3; flex: 3; }
+		.seg-ver  { background: rgba(88, 86, 214, 0.1);   color: #5856d6; flex: 0.5; }
+		.seg-rand { background: rgba(37, 162, 68, 0.1);   color: #25a244; flex: 3; }
+		.seg-var  { background: rgba(255, 149, 0, 0.12);  color: #b86400; flex: 0.5; }
+		.seg-node { background: rgba(142, 142, 147, 0.1); color: #6e6e73; flex: 3; }
 
-		.seg-label { font-size: 0.65rem; color: #64748b; margin-top: 0.25rem; }
+		.seg-label { font-size: 0.65rem; color: #86868b; margin-top: 0.25rem; }
 
 		.info-box {
-			background: #1e293b;
-			border-left: 3px solid #3b82f6;
-			border-radius: 0 0.5rem 0.5rem 0;
+			background: #ffffff;
+			border-left: 3px solid #0071e3;
+			border-radius: 0 8px 8px 0;
 			padding: 1rem 1.25rem;
 			margin: 1.25rem 0;
+			box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 		}
 
 		.info-box p { margin-bottom: 0; }
@@ -461,13 +474,13 @@ function buildHistoryHTML(): string {
 		.math {
 			font-family: "SF Mono", "Fira Code", Menlo, Consolas, monospace;
 			font-size: 0.85rem;
-			background: #0f172a;
-			border: 1px solid #334155;
-			border-radius: 0.4rem;
+			background: #f5f5f7;
+			border: 1px solid #e8e8ed;
+			border-radius: 8px;
 			padding: 0.75rem 1rem;
 			display: block;
 			margin: 0.75rem 0;
-			color: #a5f3fc;
+			color: #1d1d1f;
 			overflow-x: auto;
 		}
 
@@ -479,7 +492,7 @@ function buildHistoryHTML(): string {
 		ul li {
 			font-size: 0.9rem;
 			line-height: 1.7;
-			color: #cbd5e1;
+			color: #3a3a3c;
 			margin-bottom: 0.25rem;
 		}
 
@@ -487,7 +500,7 @@ function buildHistoryHTML(): string {
 			text-align: center;
 			margin-top: 3rem;
 			font-size: 0.75rem;
-			color: #475569;
+			color: #86868b;
 		}
 	</style>
 </head>
@@ -498,9 +511,9 @@ function buildHistoryHTML(): string {
 		<h1>UUID Knowledge Base</h1>
 		<p class="lead">
 			A <strong>Universally Unique Identifier (UUID)</strong> is a 128-bit label standardised by
-			<a href="https://www.rfc-editor.org/rfc/rfc9562" style="color:#60a5fa">RFC&nbsp;9562</a>.
+			<a href="https://www.rfc-editor.org/rfc/rfc9562" style="color:#0071e3">RFC&nbsp;9562</a>.
 			It is represented as 32 hexadecimal digits grouped by hyphens:
-			<code style="color:#a5f3fc;font-family:monospace">xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code>.
+			<code style="color:#0055b3;font-family:monospace">xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code>.
 			UUIDs are designed so that no central authority is needed to assign them. Any machine can
 			generate one independently and it will almost certainly never collide with any other.
 		</p>
@@ -544,7 +557,7 @@ function buildHistoryHTML(): string {
 					UUID v4 is almost entirely random. Only 6 bits are reserved for the version and
 					variant markers, leaving <strong>122 bits of entropy</strong>. It contains no
 					timestamp and therefore gives away no information about when or where it was created.
-					Because it is natively supported by <code style="color:#a5f3fc;font-size:0.85em">crypto.randomUUID()</code>
+					Because it is natively supported by <code style="color:#0055b3;font-size:0.85em">crypto.randomUUID()</code>
 					in all modern runtimes and browsers, it is the simplest choice for general-purpose
 					identifiers. Its only drawback is that random inserts can fragment database indexes.
 				</p>
@@ -631,7 +644,7 @@ function buildHistoryHTML(): string {
 			identifiers.
 		</p>
 
-		<p class="footer"><a href="/" style="color:#60a5fa">Generate a UUID</a></p>
+		<p class="footer"><a href="/" style="color:#0071e3">Generate a UUID</a></p>
 	</div>
 </body>
 </html>`;

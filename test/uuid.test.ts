@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { generateUUIDv1, generateUUIDv4, generateUUIDv7 } from '../src/uuid.js';
+import { generateUUIDv1, generateUUIDv4, generateUUIDv7 } from '../src/uuid';
 
 const UUID_REGEX =
 	/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
@@ -84,5 +84,12 @@ describe('generateUUIDv7', () => {
 		const ts = parseInt(hexTimestamp, 16);
 		expect(ts).toBeGreaterThanOrEqual(before);
 		expect(ts).toBeLessThanOrEqual(after);
+	});
+
+	it('is monotonically increasing when generated in rapid succession', () => {
+		const uuids = Array.from({ length: 100 }, () => generateUUIDv7());
+		for (let i = 1; i < uuids.length; i++) {
+			expect(uuids[i] > uuids[i - 1]).toBe(true);
+		}
 	});
 });

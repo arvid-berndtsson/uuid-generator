@@ -1,4 +1,4 @@
-import { generateUUIDv1, generateUUIDv4, generateUUIDv7 } from './uuid';
+import { generateUUIDv4, generateUUIDv7 } from './uuid';
 
 const COPY_ICON =
 	'<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
@@ -9,7 +9,6 @@ const COPY_ICON =
  */
 function buildMainHTML(): string {
 	const uuids = {
-		v1: generateUUIDv1(),
 		v4: generateUUIDv4(),
 		v7: generateUUIDv7(),
 	};
@@ -19,7 +18,14 @@ function buildMainHTML(): string {
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>UUID Generator</title>
+	<title>UUID Generator - Generate UUID v7 &amp; v4 Online</title>
+	<meta name="description" content="Free online UUID generator. Instantly generate UUID v7 (time-ordered, sortable) and UUID v4 (random) for databases, APIs, and distributed systems.">
+	<meta name="keywords" content="UUID generator, generate UUID, UUID v7, UUID v4, GUID generator, online UUID, unique identifier">
+	<meta property="og:title" content="UUID Generator">
+	<meta property="og:description" content="Free online UUID generator. Instantly generate UUID v7 and UUID v4 for databases, APIs, and distributed systems.">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://uuid.arvid.tech/">
+	<link rel="canonical" href="https://uuid.arvid.tech/">
 	<style>
 		* { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -215,7 +221,7 @@ function buildMainHTML(): string {
 <body>
 	<div class="container">
 		<h1>UUID Generator</h1>
-		<p class="subtitle">Generating a fresh UUID v7 — the recommended modern choice.</p>
+		<p class="subtitle">Generate a fresh UUID v7, the recommended modern choice.</p>
 
 		<!-- Primary UUID: v7 -->
 		<div class="primary-card">
@@ -223,7 +229,7 @@ function buildMainHTML(): string {
 				<span class="primary-version" id="primary-label">UUID v7</span>
 				<span class="badge-best">Best choice</span>
 			</div>
-			<p class="primary-description" id="primary-desc">Time-ordered &amp; sortable — embeds a millisecond-precision Unix timestamp in the first 48 bits, making it ideal for database primary keys and distributed systems while still being highly random.</p>
+			<p class="primary-description" id="primary-desc">Time-ordered and sortable. Embeds a millisecond-precision Unix timestamp in the first 48 bits, making it ideal for database primary keys and distributed systems.</p>
 			<div class="uuid-value-row">
 				<code class="uuid-value" id="primary-uuid">${uuids.v7}</code>
 				<button class="copy-btn" aria-label="Copy UUID" onclick="copyUUID('primary-uuid')">${COPY_ICON}</button>
@@ -244,43 +250,27 @@ function buildMainHTML(): string {
 			<div class="alt-header">
 				<span class="alt-version">UUID v4</span>
 			</div>
-			<p class="alt-description">Fully random — 122 bits of randomness, no embedded timestamp. Suitable for most general-purpose use cases.</p>
+			<p class="alt-description">Fully random. 122 bits of entropy, no embedded timestamp. Suitable for general-purpose use cases.</p>
 			<div class="uuid-value-row">
 				<code class="uuid-value" id="uuid-v4">${uuids.v4}</code>
 				<button class="copy-btn" aria-label="Copy UUID v4" onclick="event.stopPropagation(); copyUUID('uuid-v4')">${COPY_ICON}</button>
 			</div>
 		</div>
 
-		<div class="alt-card" id="alt-v1" onclick="selectVersion('v1')">
-			<div class="alt-header">
-				<span class="alt-version">UUID v1</span>
-			</div>
-			<p class="alt-description">Time-based (legacy) — encodes a 100ns-precision timestamp with a random node ID. Largely superseded by v7.</p>
-			<div class="uuid-value-row">
-				<code class="uuid-value" id="uuid-v1">${uuids.v1}</code>
-				<button class="copy-btn" aria-label="Copy UUID v1" onclick="event.stopPropagation(); copyUUID('uuid-v1')">${COPY_ICON}</button>
-			</div>
-		</div>
-
-		<p class="footer">uuid.arvid.tech &mdash; <a href="/history">Learn how UUIDs work and why they&rsquo;re practically always unique &rarr;</a></p>
+		<p class="footer"><a href="/history">Learn how UUIDs work</a></p>
 	</div>
 
 	<script>
 		const versions = {
 			v7: {
 				label: 'UUID v7',
-				desc: 'Time-ordered &amp; sortable \u2014 embeds a millisecond-precision Unix timestamp in the first 48 bits, making it ideal for database primary keys and distributed systems while still being highly random.',
+				desc: 'Time-ordered and sortable. Embeds a millisecond-precision Unix timestamp in the first 48 bits, making it ideal for database primary keys and distributed systems.',
 				value: ${JSON.stringify(uuids.v7)}
 			},
 			v4: {
 				label: 'UUID v4',
-				desc: 'Fully random \u2014 122 bits of randomness, no embedded timestamp. Suitable for most general-purpose use cases.',
+				desc: 'Fully random. 122 bits of entropy, no embedded timestamp. Suitable for general-purpose use cases.',
 				value: ${JSON.stringify(uuids.v4)}
-			},
-			v1: {
-				label: 'UUID v1',
-				desc: 'Time-based (legacy) \u2014 encodes a 100ns-precision timestamp with a random node ID. Largely superseded by v7.',
-				value: ${JSON.stringify(uuids.v1)}
 			}
 		};
 
@@ -324,7 +314,13 @@ function buildHistoryHTML(): string {
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>UUID History &amp; Knowledge Base</title>
+	<title>How UUIDs Work | UUID Generator</title>
+	<meta name="description" content="Learn how UUIDs work, why they are practically always unique, and the differences between UUID v7, v4, and v1. Includes birthday paradox probability math.">
+	<meta property="og:title" content="How UUIDs Work">
+	<meta property="og:description" content="Learn how UUIDs work, why they are practically always unique, and the differences between UUID versions.">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="https://uuid.arvid.tech/history">
+	<link rel="canonical" href="https://uuid.arvid.tech/history">
 	<style>
 		* { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -505,7 +501,7 @@ function buildHistoryHTML(): string {
 			<a href="https://www.rfc-editor.org/rfc/rfc9562" style="color:#60a5fa">RFC&nbsp;9562</a>.
 			It is represented as 32 hexadecimal digits grouped by hyphens:
 			<code style="color:#a5f3fc;font-family:monospace">xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code>.
-			UUIDs are designed so that no central authority is needed to assign them — any machine can
+			UUIDs are designed so that no central authority is needed to assign them. Any machine can
 			generate one independently and it will almost certainly never collide with any other.
 		</p>
 
@@ -528,8 +524,8 @@ function buildHistoryHTML(): string {
 					UUID v7 encodes the current Unix time in <strong>millisecond precision</strong> in the
 					most-significant 48 bits. The remaining bits hold a version nibble, a 12-bit monotonic
 					counter (to preserve strict ordering within the same millisecond), a variant marker, and
-					62 random bits. The result is <em>lexicographically sortable</em> — newer UUIDs always
-					sort after older ones — making them an excellent fit for database primary keys, because
+					62 random bits. The result is <em>lexicographically sortable</em>: newer UUIDs always
+					sort after older ones, making them an excellent fit for database primary keys, because
 					B-tree pages stay ordered and hot, avoiding the random-write fragmentation caused by v4.
 				</p>
 			</div>
@@ -545,7 +541,7 @@ function buildHistoryHTML(): string {
 					<div class="seg seg-var">var</div>
 				</div>
 				<p>
-					UUID v4 is almost entirely random — only 6 bits are reserved for the version and
+					UUID v4 is almost entirely random. Only 6 bits are reserved for the version and
 					variant markers, leaving <strong>122 bits of entropy</strong>. It contains no
 					timestamp and therefore gives away no information about when or where it was created.
 					Because it is natively supported by <code style="color:#a5f3fc;font-size:0.85em">crypto.randomUUID()</code>
@@ -571,7 +567,7 @@ function buildHistoryHTML(): string {
 					since 15 October 1582</strong> (the Gregorian calendar adoption date) rather than the
 					Unix epoch. The timestamp bytes are spread across the first three fields in a
 					<em>little-endian</em> order that makes v1 UUIDs <em>not</em> naturally sortable.
-					The node field was originally the MAC address of the machine — a privacy concern that
+					The node field was originally the MAC address of the machine, a privacy concern that
 					led RFC 9562 to recommend randomising it. For new systems, v7 is strictly better.
 				</p>
 			</div>
@@ -601,7 +597,7 @@ function buildHistoryHTML(): string {
 
 		<div class="info-box">
 			<p>
-				At a rate of <strong>one billion UUIDs per second</strong> — far beyond any real workload —
+				At a rate of <strong>one billion UUIDs per second</strong> (far beyond any real workload),
 				it would take roughly <strong>85 years</strong> of continuous generation before you had a
 				50% chance of seeing even one collision across your entire dataset.
 			</p>
@@ -618,10 +614,10 @@ function buildHistoryHTML(): string {
 		<h2>Practical sources of uniqueness</h2>
 
 		<ul>
-			<li><strong>CSPRNG entropy</strong> — UUID v4/v7 rely on a Cryptographically Secure Pseudo-Random Number Generator (CSPRNG) seeded from hardware noise, making the output statistically indistinguishable from true randomness.</li>
-			<li><strong>Temporal separation</strong> — UUID v7 uses a millisecond-precision timestamp; two UUIDs generated at different moments occupy disjoint regions of the ID space.</li>
-			<li><strong>Monotonic counter</strong> — Within the same millisecond, v7 increments a counter to guarantee strict ordering and prevent duplicates even under high throughput.</li>
-			<li><strong>No coordination required</strong> — Unlike auto-increment sequences, UUIDs need no central authority, so distributed systems can generate them independently without risk of overlap.</li>
+			<li><strong>CSPRNG entropy:</strong> UUID v4/v7 rely on a Cryptographically Secure Pseudo-Random Number Generator (CSPRNG) seeded from hardware noise, making the output statistically indistinguishable from true randomness.</li>
+			<li><strong>Temporal separation:</strong> UUID v7 uses a millisecond-precision timestamp; two UUIDs generated at different moments occupy disjoint regions of the ID space.</li>
+			<li><strong>Monotonic counter:</strong> Within the same millisecond, v7 increments a counter to guarantee strict ordering and prevent duplicates even under high throughput.</li>
+			<li><strong>No coordination required:</strong> Unlike auto-increment sequences, UUIDs need no central authority, so distributed systems can generate them independently without risk of overlap.</li>
 		</ul>
 
 		<h2>When could you actually get a collision?</h2>
@@ -630,12 +626,12 @@ function buildHistoryHTML(): string {
 			In theory, a broken or exhausted random-number generator could produce repeated outputs.
 			In practice, modern operating systems re-seed the CSPRNG continuously from hardware entropy
 			sources (thermal noise, interrupt timing, etc.), making this essentially impossible.
-			The far more likely source of duplicate IDs in real applications is a <em>bug</em> — for
+			The far more likely source of duplicate IDs in real applications is a <em>bug</em>: for
 			example, accidentally inserting the same UUID twice, or copying data without regenerating
 			identifiers.
 		</p>
 
-		<p class="footer">uuid.arvid.tech &mdash; <a href="/" style="color:#60a5fa">Generate a UUID &rarr;</a></p>
+		<p class="footer"><a href="/" style="color:#60a5fa">Generate a UUID</a></p>
 	</div>
 </body>
 </html>`;

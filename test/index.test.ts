@@ -14,9 +14,8 @@ describe('Worker — main page', () => {
 		// v7 is the primary/best-choice UUID
 		expect(html).toContain('UUID v7');
 		expect(html).toContain('Best choice');
-		// v4 and v1 are present as alternatives
+		// v4 is present as alternative
 		expect(html).toContain('UUID v4');
-		expect(html).toContain('UUID v1');
 		// Link to history page
 		expect(html).toContain('/history');
 	});

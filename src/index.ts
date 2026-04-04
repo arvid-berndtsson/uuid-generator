@@ -266,7 +266,7 @@ function buildMainHTML(): string {
 	</div>
 
 	<script>
-		var versions = {
+		const versions = {
 			v7: {
 				label: 'UUID v7',
 				desc: 'Time-ordered &amp; sortable \u2014 embeds a millisecond-precision Unix timestamp in the first 48 bits, making it ideal for database primary keys and distributed systems while still being highly random.',
@@ -284,7 +284,7 @@ function buildMainHTML(): string {
 			}
 		};
 
-		var current = 'v7';
+		let current = 'v7';
 
 		function selectVersion(v) {
 			if (v === current) return;
@@ -302,10 +302,10 @@ function buildMainHTML(): string {
 		}
 
 		function copyUUID(id) {
-			var text = document.getElementById(id).textContent;
+			const text = document.getElementById(id).textContent;
 			navigator.clipboard.writeText(text).then(function() {
-				var el = document.getElementById(id);
-				var btn = el.closest('.uuid-value-row').querySelector('.copy-btn');
+				const el = document.getElementById(id);
+				const btn = el.closest('.uuid-value-row').querySelector('.copy-btn');
 				btn.style.color = '#4ade80';
 				setTimeout(function() { btn.style.color = ''; }, 1000);
 			});
